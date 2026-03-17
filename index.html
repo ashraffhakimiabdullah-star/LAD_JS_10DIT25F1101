@@ -1,144 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab 3.1.1: JavaScript Fundamentals</title>
+    <title>JAVASCRIPT</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        /* Tukar tema warna kepada Biru */
+        .custom-theme {
+            background-color: #0056b3 !important;
+        }
+
+        .navbar {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+
+        .navbar-brand img {
+            width: 45px;
+            height: 45px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        /* Footer Biru Fixed */
+        footer {
+            background-color: #0056b3 !important;
+            color: white;
+        }
+
+        body {
+            padding-bottom: 100px;
+        }
+
+        /* Warna hover/active pada dropdown */
+        .dropdown-item:active {
+            background-color: #0056b3;
+        }
+
+        section {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #2c3e50;
+            border-left: 5px solid #3498db;
+            padding-left: 10px;
+            margin-top: 0;
+        }
+
+        .output-box {
+            background: #2c3e50;
+            color: #27ae60;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            margin-top: 10px;
+        }
+
+        .short-note {
+            background: #fff3cd;
+            color: #856404;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+            border-left: 5px solid #ffc107;
+            display: none;
+            font-size: 0.9rem;
+        }
+
+        input {
+            padding: 8px;
+            width: 100px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 8px 20px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-weight: bold;
+            color: #d63384;
+        }
+    </style>
 </head>
+
 <body>
+    <header class="custom-theme shadow-sm">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid px-5">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <img src="logo.jpg" alt="Logo">
+                    <span style="font-size: 1.5rem; color: white; margin-left: 10px;">JAVASCRIPT</span>
+                </a>
 
-<!-- Header Section -->
-<header>
-    <h1>Lab 3.1.1: JavaScript Fundamentals</h1>
-    <p>Variables, Data Types, and Operators</p>
-</header>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-<!-- Steps 1-3 Card -->
-<section class="lab-card">
-    <h2>Steps 1 - 3: Logic & Console</h2>
-    <div class="instruction">
-        Open the <strong>Browser Console</strong> (F12 > Console) to see the output for variables and <code>typeof</code> checks.
-    </div>
-    <button onclick="runConsoleTasks()">Run Console Tasks</button>
-    <p class="note">*This logs Course Name, Student Count, and Data Types.</p>
-</section>
+                <div class="collapse navbar-collapse" id="nav" style="font-size: 1.1rem;">
+                    <ul class="navbar-nav ms-auto d-flex gap-3">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                                LAB 1A
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="LAB1A-1.html">LAB 1A-1</a></li>
+                                <li><a class="dropdown-item" href="LAB1A-2.html">LAB 1A-2</a></li>
+                                <li><a class="dropdown-item" href="LAB1A-3.html">LAB 1A-3</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="LAB1B.html">LAB 1B</a></li>
+                        <li class="nav-item"><a class="nav-link" href="LAB1C.html">LAB 1C</a> </li>
+                        <li class="nav-item"><a class="nav-link" href="LAB2A.html">LAB 2A</a></li>
+                        <li class="nav-item"><a class="nav-link" href="REPORT.html">REPORT</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-<!-- Step 4 Card -->
-<section class="lab-card">
-    <h2>Step 4: Simple UI Output</h2>
-    <div class="instruction">
-        Test the <code>prompt()</code>, <code>alert()</code>, and <code>confirm()</code> functions.
-    </div>
-    <button onclick="runInteraction()">Start Interaction</button>
-</section>
-
-<!-- Final Task: POS Script Card -->
-<section class="lab-card" style="border: 2px solid #27ae60; margin-top: 20px; padding: 15px; border-radius: 8px;">
-    <h2 style="color: #27ae60;">Final Task: POS Script</h2>
-    <div class="instruction">
-        <strong>Scenario:</strong> Calculate a total bill with 6% Service Tax.
-    </div>
-    <p>Price per Item: <strong>RM 15.00</strong></p>
-    <p>Tax Rate: <strong>6%</strong></p>
-    <button onclick="runPOS()" style="background-color: #27ae60; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
-        Checkout Now
-    </button>
-</section>
-
-<!-- JavaScript Code -->
-<script>
-    // Step 1-3: runConsoleTasks function
-    function runConsoleTasks() {
-        // Variable declarations
-        const courseName = "JavaScript Fundamentals";
-        let studentCount = 25;
-        const isFull = false;
-
-        // Display initial values
-        console.log("Course: " + courseName);
-        console.log("Initial students: " + studentCount);
-        console.log("Is class full? " + isFull);
-
-        // typeof operator
-        console.log("typeof courseName: " + typeof courseName);
-        console.log("typeof studentCount: " + typeof studentCount);
-        console.log("typeof isFull: " + typeof isFull);
-
-        // Additional typeof examples
-        let undefinedVar;
-        let nullValue = null;
-        console.log("typeof undefinedVar: " + typeof undefinedVar);
-        console.log("typeof nullValue: " + typeof nullValue);
-
-        // Arithmetic operators
-        console.log("5 + 3 = " + (5 + 3));
-        console.log("10 - 4 = " + (10 - 4));
-        console.log("7 * 3 = " + (7 * 3));
-        console.log("20 / 4 = " + (20 / 4));
-        console.log("17 % 5 = " + (17 % 5));
-        console.log("10 % 3 = " + (10 % 3));
-    }
-
-    // Step 4: runInteraction function (prompt, alert, confirm)
-    function runInteraction() {
-        let userName = prompt("What is your name?", "student");
-        
-        if (userName !== null && userName.trim() !== "") {
-            alert("Hello, " + userName + "! Welcome to lab.");
-        } else {
-            alert("Hello, anonymous! Welcome to lab.");
-            userName = "Guest";
-        }
-
-        let likesJS = confirm("Do you like JavaScript? (OK = yes, Cancel = no)");
-        
-        if (likesJS) {
-            console.log("User likes JavaScript! 👍");
-        } else {
-            console.log("User not ready 😢");
-        }
-        
-        console.log("confirm() returned: " + likesJS);
-    }
-
-    // Final Task: POS Script function
-    function runPOS() {
-        const TAX_RATE = 0.06;       // 6% service tax (constant)
-        const ITEM_PRICE = 15.00;     // RM 15 per item
-
-        // Prompt for quantity
-        let quantityInput = prompt("Enter quantity for item (RM 15 each):", "1");
-
-        // Check if user cancelled
-        if (quantityInput === null) {
-            alert("No quantity entered. Cancelled.");
-            return;
-        }
-
-        // Convert string to integer
-        let quantity = parseInt(quantityInput, 10);
-
-        // Validate input
-        if (isNaN(quantity) || quantity <= 0) {
-            alert("Invalid quantity. Please enter a positive number.");
-            console.warn("POS invalid input: " + quantityInput);
-            return;
-        }
-
-        // Calculations
-        let subtotal = quantity * ITEM_PRICE;
-        let taxAmount = subtotal * TAX_RATE;
-        let total = subtotal + taxAmount;
-
-        // Format to 2 decimal places
-        let formattedTotal = total.toFixed(2);
-
-        // Display result
-        alert("Your total bill including tax (6%) is: RM " + formattedTotal);
-
-        // Optional console log
-        console.log(`POS: Qty ${quantity}, subtotal RM ${subtotal.toFixed(2)}, tax RM ${taxAmount.toFixed(2)}, total RM ${formattedTotal}`);
-    }
-</script>
-</body>
-</html>
+    <section class="text-center mb-5">
+        <h3>JAVASCRIPT LAB ACTIVITY </h3>
+        <h3>PREPARED BY: ASHRAFF HAKIMI (10DIT25F1101)</h3>
+    </section>
