@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 3.1.1: JavaScript Fundamentals</title>
+</head>
+<body>
+
+<!-- Header Section -->
+<header>
+    <h1>Lab 3.1.1: JavaScript Fundamentals</h1>
+    <p>Variables, Data Types, and Operators</p>
+</header>
+
+<!-- Steps 1-3 Card -->
+<section class="lab-card">
+    <h2>Steps 1 - 3: Logic & Console</h2>
+    <div class="instruction">
+        Open the <strong>Browser Console</strong> (F12 > Console) to see the output for variables and <code>typeof</code> checks.
+    </div>
+    <button onclick="runConsoleTasks()">Run Console Tasks</button>
+    <p class="note">*This logs Course Name, Student Count, and Data Types.</p>
+</section>
+
+<!-- Step 4 Card -->
+<section class="lab-card">
+    <h2>Step 4: Simple UI Output</h2>
+    <div class="instruction">
+        Test the <code>prompt()</code>, <code>alert()</code>, and <code>confirm()</code> functions.
+    </div>
+    <button onclick="runInteraction()">Start Interaction</button>
+</section>
+
+<!-- Final Task: POS Script Card -->
+<section class="lab-card" style="border: 2px solid #27ae60; margin-top: 20px; padding: 15px; border-radius: 8px;">
+    <h2 style="color: #27ae60;">Final Task: POS Script</h2>
+    <div class="instruction">
+        <strong>Scenario:</strong> Calculate a total bill with 6% Service Tax.
+    </div>
+    <p>Price per Item: <strong>RM 15.00</strong></p>
+    <p>Tax Rate: <strong>6%</strong></p>
+    <button onclick="runPOS()" style="background-color: #27ae60; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
+        Checkout Now
+    </button>
+</section>
+
+<!-- JavaScript Code -->
+<script>
+    // Step 1-3: runConsoleTasks function
+    function runConsoleTasks() {
+        // Variable declarations
+        const courseName = "JavaScript Fundamentals";
+        let studentCount = 25;
+        const isFull = false;
+
+        // Display initial values
+        console.log("Course: " + courseName);
+        console.log("Initial students: " + studentCount);
+        console.log("Is class full? " + isFull);
+
+        // typeof operator
+        console.log("typeof courseName: " + typeof courseName);
+        console.log("typeof studentCount: " + typeof studentCount);
+        console.log("typeof isFull: " + typeof isFull);
+
+        // Additional typeof examples
+        let undefinedVar;
+        let nullValue = null;
+        console.log("typeof undefinedVar: " + typeof undefinedVar);
+        console.log("typeof nullValue: " + typeof nullValue);
+
+        // Arithmetic operators
+        console.log("5 + 3 = " + (5 + 3));
+        console.log("10 - 4 = " + (10 - 4));
+        console.log("7 * 3 = " + (7 * 3));
+        console.log("20 / 4 = " + (20 / 4));
+        console.log("17 % 5 = " + (17 % 5));
+        console.log("10 % 3 = " + (10 % 3));
+    }
+
+    // Step 4: runInteraction function (prompt, alert, confirm)
+    function runInteraction() {
+        let userName = prompt("What is your name?", "student");
+        
+        if (userName !== null && userName.trim() !== "") {
+            alert("Hello, " + userName + "! Welcome to lab.");
+        } else {
+            alert("Hello, anonymous! Welcome to lab.");
+            userName = "Guest";
+        }
+
+        let likesJS = confirm("Do you like JavaScript? (OK = yes, Cancel = no)");
+        
+        if (likesJS) {
+            console.log("User likes JavaScript! 👍");
+        } else {
+            console.log("User not ready 😢");
+        }
+        
+        console.log("confirm() returned: " + likesJS);
+    }
+
+    // Final Task: POS Script function
+    function runPOS() {
+        const TAX_RATE = 0.06;       // 6% service tax (constant)
+        const ITEM_PRICE = 15.00;     // RM 15 per item
+
+        // Prompt for quantity
+        let quantityInput = prompt("Enter quantity for item (RM 15 each):", "1");
+
+        // Check if user cancelled
+        if (quantityInput === null) {
+            alert("No quantity entered. Cancelled.");
+            return;
+        }
+
+        // Convert string to integer
+        let quantity = parseInt(quantityInput, 10);
+
+        // Validate input
+        if (isNaN(quantity) || quantity <= 0) {
+            alert("Invalid quantity. Please enter a positive number.");
+            console.warn("POS invalid input: " + quantityInput);
+            return;
+        }
+
+        // Calculations
+        let subtotal = quantity * ITEM_PRICE;
+        let taxAmount = subtotal * TAX_RATE;
+        let total = subtotal + taxAmount;
+
+        // Format to 2 decimal places
+        let formattedTotal = total.toFixed(2);
+
+        // Display result
+        alert("Your total bill including tax (6%) is: RM " + formattedTotal);
+
+        // Optional console log
+        console.log(`POS: Qty ${quantity}, subtotal RM ${subtotal.toFixed(2)}, tax RM ${taxAmount.toFixed(2)}, total RM ${formattedTotal}`);
+    }
+</script>
+</body>
+</html>
